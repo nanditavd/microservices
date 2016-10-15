@@ -1,0 +1,33 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:8888
+---
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 5000
+server:
+  port: 8007
+  
+#spring:
+#  cloud:
+#    consul:
+#      discovery:
+#        instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+#            
+#    config:
+#      enabled: false
+
+---
+spring:
+  application:
+    name: search-api-gateway
+
+
+zuul:
+  routes:
+    search-service:
+      path: /search/**
+    

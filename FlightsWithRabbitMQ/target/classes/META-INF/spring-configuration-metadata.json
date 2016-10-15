@@ -1,0 +1,13 @@
+{
+  "groups": [{
+    "name": "newConfig",
+    "type": "com.sample.nandita.CloudBusRestController",
+    "sourceType": "com.sample.nandita.CloudBusRestController"
+  }],
+  "properties": [{
+    "name": "newConfig.data",
+    "type": "java.lang.String",
+    "sourceType": "com.sample.nandita.CloudBusRestController"
+  }],
+  "hints": []
+}
