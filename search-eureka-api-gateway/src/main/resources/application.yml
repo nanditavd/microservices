@@ -23,7 +23,7 @@ security:
     sso:
       loginPath: /login
     client:
-      accessTokenUri: http://localhost:${server.port}/sgoauth/oauth/token
+      accessTokenUri: http://localhost:${server.port}/sg/oauth/token
       userAuthorizationUri: /sg/oauth/authorize
       clientId: sg
       clientSecret: sgoauth
