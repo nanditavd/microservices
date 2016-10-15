@@ -1,0 +1,46 @@
+spring:
+  aop:
+    proxyTargetClass: true
+  application:
+    name: 
+
+
+
+zuul:
+  routes:
+    search-service: /search/**
+    uaa-service:
+      sensitiveHeaders:
+      path: /sgoauth/**
+      stripPrefix: false
+  add-proxy-headers: true
+
+security:
+  # Disable Spring Boot basic authentication
+  basic:
+    enabled: false
+  oauth2:
+    sso:
+      loginPath: /login
+    client:
+      accessTokenUri: http://localhost:${server.port}/sgoauth/oauth/token
+      userAuthorizationUri: /uaa/oauth/authorize
+      clientId: sg
+      clientSecret: sgoauth
+    resource:
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjEv1WsQP5sfzrQB09fE2
+uPdL+tu8EiO6bSssK9qadvzy2WbmXmIFEMcr0O0Q439MIFwHySdAsDkJGS/OeEke
+MDP8LQgPmw45uhYb3G5c64twLg2lZOXybxFInANqjNV0y+/IAieN/yjqvi+tsA3l
+bY+xi3/eM02DNSNWU7B42XuxFyWIwW/xyjoE0ZqCll7sW4k6PaeVV/M+srj3ouqW
+tzdi+K3FyXwtA8ENtYPC7s7cxY6DKxjWTtn0CrrLSiG7xu9sgCldylzs0NYiR9qM
+8mXpyEKKyFfTHt2H/x4r3MYXOO1ekkgZr/tm1MyBFzyIiZOCls7CNKrbMrxMtIBd
+DQIDAQAB
+          -----END PUBLIC KEY-----
+      id: openid
+      serviceId: ${PREFIX:}resource
+
+logging:
+  level.org.springframework.security: DEBUG
